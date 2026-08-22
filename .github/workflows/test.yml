@@ -27,7 +27,7 @@ jobs:
           tapdir="$(brew --repository rootledev/tap)"
           mkdir -p "$(dirname "$tapdir")"
           ln -sfn "$PWD" "$tapdir"
-          brew tap --list | grep rootledev/tap
+          brew tap | grep rootledev/tap
 
       - name: Style
         run: brew style rootledev/tap
