@@ -1,0 +1,42 @@
+name: test
+
+# Tap CI: style + audit + build-from-source + formula test, on macOS
+# (arm64) and Linux. Weekly cron catches bit rot (new rust/brew
+# releases breaking the source build) even with no pushes.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: Homebrew/actions/setup-homebrew@main
+
+      - name: Tap this repo locally
+        run: |
+          tapdir="$(brew --repository rootledev/tap)"
+          mkdir -p "$(dirname "$tapdir")"
+          ln -sfn "$PWD" "$tapdir"
+          brew tap --list | grep rootledev/tap
+
+      - name: Style
+        run: brew style rootledev/tap
+
+      - name: Audit
+        run: brew audit --new --formula rootledev/tap/rootle
+
+      - name: Install from source
+        run: brew install --verbose --build-from-source rootledev/tap/rootle
+
+      - name: Test
+        run: brew test rootledev/tap/rootle
