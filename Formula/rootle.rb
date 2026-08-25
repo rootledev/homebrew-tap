@@ -1,8 +1,8 @@
 class Rootle < Formula
   desc "Modal TUI for browsing remote source-control systems from the terminal"
   homepage "https://rootle.dev/"
-  url "https://static.crates.io/crates/rootle/rootle-0.4.0.crate"
-  sha256 "69820cb41a74c5d1f7934c25ddf88977da4661aac99adb196ef89ce496bbee25"
+  url "https://static.crates.io/crates/rootle/rootle-0.4.1.crate"
+  sha256 "a7bd86a775ed9f273cdc75ebd6d42763555f145cd999af920ac61c63859c571b"
   license "MIT"
 
   depends_on "cmake" => :build # aws-lc-sys
