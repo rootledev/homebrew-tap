@@ -1,9 +1,9 @@
 cask "rootle" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "0.8.4"
-  sha256 arm:   "4b5b2588f37da20d55ea38b3182711020960e9d2e6ee2cf3c4b28ebb644ab642",
-         intel: "3e7ddf9a661ee5de8076d0fa3faba3a531602431e4f017a0d8f1dcfa8bbeb63c"
+  version "0.8.5"
+  sha256 arm:   "2a6ecab7e28cc19b2ed215b9efda8657e87147bf77ee8a4ef7a7355e04999608",
+         intel: "e4520d9036567c78249f02a6d5af2fb0e84fde0d41b9570d78ba79372301c9f1"
 
   url "https://github.com/rootledev/rootle/releases/download/v#{version}/rootle-#{version}-#{arch}-apple-darwin.tar.gz"
   name "rootle"
