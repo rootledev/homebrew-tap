@@ -5,6 +5,8 @@ class Rootle < Formula
   sha256 "3d57c25e7f2fcbcc0999579105f046e22f5f1e33b2074eaca9b132ff441adde5"
   license "MIT"
 
+  depends_on arch: :x86_64
+  depends_on :linux
   depends_on "cmake" => :build # aws-lc-sys
   depends_on "rust" => :build
 

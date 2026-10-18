@@ -1,8 +1,8 @@
 name: test
 
-# Tap CI: style + audit + build-from-source + formula test, on macOS
-# (arm64) and Linux. Weekly cron catches bit rot (new rust/brew
-# releases breaking the source build) even with no pushes.
+# Tap CI: Linux x86_64 only (including WSL users). Weekly cron catches
+# bit rot in the source build even with no pushes. Historical macOS
+# releases remain available, but the cask is no longer maintained.
 on:
   push:
     branches: [main]
@@ -12,11 +12,7 @@ on:
 
 jobs:
   test:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
 
